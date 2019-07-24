@@ -1,17 +1,23 @@
-#include "argon2-sse2.h"
+#include "argon2-sse3.h"
 
 #include "sse_shim.h"
 
-#ifdef __SSE2__
-#pragma message ("info: ACTIVATING SSE2 in argon2-sse2.c")
+#ifdef __SSE3__
+#pragma message ("info: ACTIVATING SSE3 in argon2-sse3.c")
+#include <string.h>
+
 #include <immintrin.h>
 
-#define ror64_16(x) \
-    _mm_shufflehi_epi16( \
-        _mm_shufflelo_epi16((x), _MM_SHUFFLE(0, 3, 2, 1)), \
-        _MM_SHUFFLE(0, 3, 2, 1))
-#define ror64_24(x) \
-    _mm_xor_si128(_mm_srli_epi64((x), 24), _mm_slli_epi64((x), 40))
+#define r16 (_mm_setr_epi8( \
+     2,  3,  4,  5,  6,  7,  0,  1, \
+    10, 11, 12, 13, 14, 15,  8,  9))
+
+#define r24 (_mm_setr_epi8( \
+     3,  4,  5,  6,  7,  0,  1,  2, \
+    11, 12, 13, 14, 15,  8,  9, 10))
+
+#define ror64_16(x) _mm_shuffle_epi8((x), r16)
+#define ror64_24(x) _mm_shuffle_epi8((x), r24)
 #define ror64_32(x) _mm_shuffle_epi32((x), _MM_SHUFFLE(2, 3, 0, 1))
 #define ror64_63(x) \
     _mm_xor_si128(_mm_srli_epi64((x), 63), _mm_add_epi64((x), (x)))
@@ -66,22 +72,28 @@ static __m128i f(__m128i x, __m128i y)
 
 #define DIAGONALIZE(A0, B0, C0, D0, A1, B1, C1, D1) \
     do { \
-        __m128i t0 = D0; \
-        __m128i t1 = B0; \
-        D0 = _mm_unpackhi_epi64(D1, _mm_unpacklo_epi64(t0, t0)); \
-        D1 = _mm_unpackhi_epi64(t0, _mm_unpacklo_epi64(D1, D1)); \
-        B0 = _mm_unpackhi_epi64(B0, _mm_unpacklo_epi64(B1, B1)); \
-        B1 = _mm_unpackhi_epi64(B1, _mm_unpacklo_epi64(t1, t1)); \
+        __m128i t0 = _mm_alignr_epi8(B1, B0, 8); \
+        __m128i t1 = _mm_alignr_epi8(B0, B1, 8); \
+        B0 = t0; \
+        B1 = t1; \
+\
+        t0 = _mm_alignr_epi8(D1, D0, 8); \
+        t1 = _mm_alignr_epi8(D0, D1, 8); \
+        D0 = t1; \
+        D1 = t0; \
     } while ((void)0, 0)
 
 #define UNDIAGONALIZE(A0, B0, C0, D0, A1, B1, C1, D1) \
     do { \
-        __m128i t0 = B0; \
-        __m128i t1 = D0; \
-        B0 = _mm_unpackhi_epi64(B1, _mm_unpacklo_epi64(B0, B0)); \
-        B1 = _mm_unpackhi_epi64(t0, _mm_unpacklo_epi64(B1, B1)); \
-        D0 = _mm_unpackhi_epi64(D0, _mm_unpacklo_epi64(D1, D1)); \
-        D1 = _mm_unpackhi_epi64(D1, _mm_unpacklo_epi64(t1, t1)); \
+        __m128i t0 = _mm_alignr_epi8(B0, B1, 8); \
+        __m128i t1 = _mm_alignr_epi8(B1, B0, 8); \
+        B0 = t0; \
+        B1 = t1; \
+\
+        t0 = _mm_alignr_epi8(D0, D1, 8); \
+        t1 = _mm_alignr_epi8(D1, D0, 8); \
+        D0 = t1; \
+        D1 = t0; \
     } while ((void)0, 0)
 
 #define BLAKE2_ROUND(A0, A1, B0, B1, C0, C1, D0, D1) \
@@ -99,25 +111,25 @@ static __m128i f(__m128i x, __m128i y)
 
 #include "argon2-template-128.h"
 
-void fill_segment_sse2(const argon2_instance_t *instance,
-                       argon2_position_t position)
+void fill_segment_ssse3(const argon2_instance_t *instance,
+                        argon2_position_t position)
 {
     fill_segment_128(instance, position);
 }
 
-int check_sse2(void)
+int check_ssse3(void)
 {
     return 1;
 }
 
 #else
 
-void fill_segment_sse2(const argon2_instance_t *instance,
-                       argon2_position_t position)
+void fill_segment_ssse3(const argon2_instance_t *instance,
+                        argon2_position_t position)
 {
 }
 
-int check_sse2(void)
+int check_ssse3(void)
 {
     return 0;
 }
