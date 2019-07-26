@@ -18,7 +18,7 @@
 
 #include <iomanip>
 
-#include <Rpc/CoreRpcServerCommandsDefinitions.h>
+#include <rpc/CoreRpcServerCommandsDefinitions.h>
 
 namespace Utilities
 {

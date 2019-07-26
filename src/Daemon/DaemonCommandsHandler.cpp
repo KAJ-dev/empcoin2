@@ -17,7 +17,7 @@
 
 #include <p2p/NetNode.h>
 
-#include <Rpc/JsonRpc.h>
+#include <rpc/JsonRpc.h>
 
 #include <serialization/SerializationTools.h>
 
