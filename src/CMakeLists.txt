@@ -46,11 +46,11 @@ file(GLOB_RECURSE zedwallet zedwallet/*)
 file(GLOB_RECURSE zedwallet++ zedwallet++/*)
 
 if (MSVC)
-    file(GLOB_RECURSE System system/* platform/Windows/System/*)
+    file(GLOB_RECURSE System system/* platform/windows/system/*)
 elseif (APPLE)
-    file(GLOB_RECURSE System system/* platform/OSX/System/* platform/Posix/System/*)
+    file(GLOB_RECURSE System system/* platform/osx/system/* platform/posix/system/*)
 else ()
-    file(GLOB_RECURSE System system/* platform/Linux/System/* platform/Posix/System/*)
+    file(GLOB_RECURSE System system/* platform/linux/system/* platform/posix/system/*)
 endif ()
 
 # Group the files together in IDEs
