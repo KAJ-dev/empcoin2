@@ -15,33 +15,33 @@ include_directories(${CMAKE_SOURCE_DIR}/external/lz4)
 # Show cmake where the source files are
 # Note, if you add remove a source file, you will need to re-run cmake so it
 # can find the new file
-file(GLOB_RECURSE BlockchainExplorer BlockchainExplorer/*)
+file(GLOB_RECURSE BlockchainExplorer blockchainexplorer/*)
 file(GLOB_RECURSE Common common/*)
 file(GLOB_RECURSE Config config/*)
 file(GLOB_RECURSE Crypto crypto/*)
-file(GLOB_RECURSE CryptoNoteCore CryptoNoteCore/* CryptoNoteConfig.h)
-file(GLOB_RECURSE CryptoNoteProtocol CryptoNoteProtocol/*)
-file(GLOB_RECURSE CryptoTest CryptoTest/*)
-file(GLOB_RECURSE Errors Errors/*)
-file(GLOB_RECURSE Http HTTP/*)
-file(GLOB_RECURSE JsonRpcServer JsonRpcServer/*)
-file(GLOB_RECURSE Logging Logging/*)
-file(GLOB_RECURSE Logger Logger/*)
-file(GLOB_RECURSE miner Miner/*)
-file(GLOB_RECURSE Mnemonics Mnemonics/*)
-file(GLOB_RECURSE Nigel Nigel/*)
-file(GLOB_RECURSE NodeRpcProxy NodeRpcProxy/*)
-file(GLOB_RECURSE P2p P2p/*)
-file(GLOB_RECURSE Rpc Rpc/*)
-file(GLOB_RECURSE Serialization Serialization/*)
-file(GLOB_RECURSE SubWallets SubWallets/*)
-file(GLOB_RECURSE Transfers Transfers/*)
+file(GLOB_RECURSE CryptoNoteCore cryptonotecore/* CryptoNoteConfig.h)
+file(GLOB_RECURSE CryptoNoteProtocol cryptonoteprotocol/*)
+file(GLOB_RECURSE CryptoTest cryptotest/*)
+file(GLOB_RECURSE Errors errors/*)
+file(GLOB_RECURSE Http http/*)
+file(GLOB_RECURSE JsonRpcServer jsonrpcserver/*)
+file(GLOB_RECURSE Logging logging/*)
+file(GLOB_RECURSE Logger logger/*)
+file(GLOB_RECURSE miner miner/*)
+file(GLOB_RECURSE Mnemonics mnemonics/*)
+file(GLOB_RECURSE Nigel nigel/*)
+file(GLOB_RECURSE NodeRpcProxy nodeRpcProxy/*)
+file(GLOB_RECURSE P2p p2p/*)
+file(GLOB_RECURSE Rpc rpc/*)
+file(GLOB_RECURSE Serialization serialization/*)
+file(GLOB_RECURSE SubWallets subwallets/*)
+file(GLOB_RECURSE Transfers transfers/*)
 file(GLOB_RECURSE TurtleCoind daemon/*)
-file(GLOB_RECURSE Utilities Utilities/*)
-file(GLOB_RECURSE Wallet Wallet/*)
-file(GLOB_RECURSE WalletApi WalletApi/*)
-file(GLOB_RECURSE WalletBackend WalletBackend/*)
-file(GLOB_RECURSE WalletService WalletService/*)
+file(GLOB_RECURSE Utilities utilities/*)
+file(GLOB_RECURSE Wallet wallet/*)
+file(GLOB_RECURSE WalletApi walletapi/*)
+file(GLOB_RECURSE WalletBackend walletbackend/*)
+file(GLOB_RECURSE WalletService walletservice/*)
 file(GLOB_RECURSE zedwallet zedwallet/*)
 file(GLOB_RECURSE zedwallet++ zedwallet++/*)
 
@@ -82,22 +82,22 @@ add_library(WalletBackend STATIC ${WalletBackend})
 
 if (MSVC)
     set(DAEMON_SOURCES_OS
-            BinaryInfo/daemon.rc
+            binaryinfo/daemon.rc
             )
     set(ZED_WALLET_SOURCES_OS
-            BinaryInfo/zedwallet.rc
+            binaryinfo/zedwallet.rc
             )
     set(MINER_SOURCES_OS
-            BinaryInfo/miner.rc
+            binaryinfo/miner.rc
             )
     set(PG_SOURCES_OS
-            BinaryInfo/service.rc
+            binaryinfo/service.rc
             )
     set(CT_SOURCES_OS
-            BinaryInfo/cryptotest.rc
+            binaryinfo/cryptotest.rc
             )
     set(WALLET_API_SOURCES_OS
-            BinaryInfo/walletapi.rc
+            binaryinfo/walletapi.rc
             )
 endif ()
 

@@ -7,11 +7,11 @@
 
 #include "common/ConsoleHandler.h"
 
-#include <Logging/LoggerRef.h>
-#include <Logging/LoggerManager.h>
-#include "Rpc/RpcServer.h"
-#include "Rpc/CoreRpcServerCommandsDefinitions.h"
-#include "Rpc/JsonRpc.h"
+#include <logging/LoggerRef.h>
+#include <logging/LoggerManager.h>
+#include "rpc/RpcServer.h"
+#include "rpc/CoreRpcServerCommandsDefinitions.h"
+#include "rpc/JsonRpc.h"
 
 namespace CryptoNote
 {

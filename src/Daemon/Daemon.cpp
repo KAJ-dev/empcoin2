@@ -18,25 +18,25 @@
 #include "common/FileSystemShim.h"
 #include "crypto/hash.h"
 #include "common/CryptoNoteTools.h"
-#include "CryptoNoteCore/Core.h"
-#include "CryptoNoteCore/Currency.h"
-#include "CryptoNoteCore/DatabaseBlockchainCache.h"
-#include "CryptoNoteCore/DatabaseBlockchainCacheFactory.h"
-#include "CryptoNoteCore/MainChainStorage.h"
-#include "CryptoNoteCore/MainChainStorageSqlite.h"
-#include "CryptoNoteCore/MainChainStorageRocksdb.h"
-#include "CryptoNoteCore/RocksDBWrapper.h"
-#include "CryptoNoteProtocol/CryptoNoteProtocolHandler.h"
-#include "P2p/NetNode.h"
-#include "P2p/NetNodeConfig.h"
-#include "Rpc/RpcServer.h"
-#include "Serialization/BinaryInputStreamSerializer.h"
-#include "Serialization/BinaryOutputStreamSerializer.h"
+#include "cryptonotecore/Core.h"
+#include "cryptonotecore/Currency.h"
+#include "cryptonotecore/DatabaseBlockchainCache.h"
+#include "cryptonotecore/DatabaseBlockchainCacheFactory.h"
+#include "cryptonotecore/MainChainStorage.h"
+#include "cryptonotecore/MainChainStorageSqlite.h"
+#include "cryptonotecore/MainChainStorageRocksdb.h"
+#include "cryptonotecore/RocksDBWrapper.h"
+#include "cryptonoteprotocol/CryptoNoteProtocolHandler.h"
+#include "p2p/NetNode.h"
+#include "p2p/NetNodeConfig.h"
+#include "rpc/RpcServer.h"
+#include "serialization/BinaryInputStreamSerializer.h"
+#include "serialization/BinaryOutputStreamSerializer.h"
 
 #include <config/CryptoNoteCheckpoints.h>
-#include <Logging/LoggerManager.h>
+#include <logging/LoggerManager.h>
 
-#include <Common/FileSystemShim.h>
+#include <common/FileSystemShim.h>
 
 #if defined(WIN32)
 

@@ -7,7 +7,7 @@
 
 #include <rapidjson/document.h>
 #include <config/CryptoNoteConfig.h>
-#include <Logging/ILogger.h>
+#include <logging/ILogger.h>
 #include "common/PathTools.h"
 #include "common/Util.h"
 
