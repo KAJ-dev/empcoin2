@@ -24,7 +24,7 @@ const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
 const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 27233;
-const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 40;
+const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 15;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V3         = 3 * DIFFICULTY_TARGET;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V4         = 6 * DIFFICULTY_TARGET;
@@ -45,13 +45,13 @@ const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V3              = 3;
 const unsigned EMISSION_SPEED_FACTOR                         = 25;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
-const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff000188f3b501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210142694232c5b04151d9e4c27d31ec7a68ea568b19488cfcb422659a07a0e44dd5";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "012801ff000188f3b501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121015b9ceb38092040ebb9385494de8b9386116563b5e25ee9d9c1c149bf32a97716";
 static_assert(sizeof(GENESIS_COINBASE_TX_HEX)/sizeof(*GENESIS_COINBASE_TX_HEX) != 1, "GENESIS_COINBASE_TX_HEX must not be empty.");
 
 /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
    You can get this value by doing "print_block 2" in TurtleCoind. It is used to know what timestamp
    to import from when the block height cannot be found in the node or the node is offline. */
-const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1512800692;
+const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1564201141;
 
 const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
 const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; //size of block (bytes) after which reward for block calculated using block size
@@ -137,8 +137,8 @@ const size_t   FUSION_TX_MIN_IN_OUT_COUNT_RATIO              = 4;
 
 const uint32_t UPGRADE_HEIGHT_V2                             = 1;
 const uint32_t UPGRADE_HEIGHT_V3                             = 2;
-const uint32_t UPGRADE_HEIGHT_V4                             = 350000; // Upgrade height for CN-Lite Variant 1 switch.
-const uint32_t UPGRADE_HEIGHT_V5                             = 1200000; // Upgrade height for CN-Turtle Variant 2 switch.
+const uint32_t UPGRADE_HEIGHT_V4                             = 3; // Upgrade height for CN-Lite Variant 1 switch.
+const uint32_t UPGRADE_HEIGHT_V5                             = 4; // Upgrade height for CN-Turtle Variant 2 switch.
 const uint32_t UPGRADE_HEIGHT_CURRENT                        = UPGRADE_HEIGHT_V5;
 
 const unsigned UPGRADE_VOTING_THRESHOLD                      = 90;               // percent
