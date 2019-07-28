@@ -18,13 +18,13 @@
 namespace CryptoNote {
 namespace parameters {
 
-const uint64_t DIFFICULTY_TARGET                             = 100; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 30; // seconds
 
 const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
 const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 27233;
-const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 15;
+const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 40;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V3         = 3 * DIFFICULTY_TARGET;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V4         = 6 * DIFFICULTY_TARGET;
@@ -60,7 +60,7 @@ const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1  = 10000;
 const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
 const size_t   CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE        = 600;
 
-const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 4;
+const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 6;
 
 const uint64_t MINIMUM_FEE                                   = UINT64_C(10);
 
