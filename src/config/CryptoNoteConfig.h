@@ -66,7 +66,7 @@ const uint64_t MINIMUM_FEE                                   = UINT64_C(10);
 
 /* This section defines our minimum and maximum mixin counts required for transactions */
 const uint64_t MINIMUM_MIXIN_V1                              = 0;
-const uint64_t MAXIMUM_MIXIN_V1                              = 100;
+const uint64_t MAXIMUM_MIXIN_V1                              = 1;
 
 const uint64_t MINIMUM_MIXIN_V2                              = 7;
 const uint64_t MAXIMUM_MIXIN_V2                              = 7;
